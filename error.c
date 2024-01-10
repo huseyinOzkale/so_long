@@ -6,18 +6,18 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:08:03 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/09 19:21:53 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:44:04 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-void	ft_print_error(char *str, t_solong *solong)
+void	ft_print_error(t_solong *solong)
 {
 	int	i;
 
 	i = 0;
-	printf("%s", str);
+	printf("MAP ERROR!");
 	while (solong->map[i])
 	{
 		if (solong->map[i] != NULL)
@@ -56,9 +56,9 @@ void	object_check(t_solong *solong)
 {
 	object_count(solong);
 	if (solong->p_count != 1)
-		ft_print_error("hatalı player", solong);
+		ft_print_error(solong);
 	else if (solong->e_count != 1)
-		ft_print_error("hatalı exit", solong);
-	else if (solong->c_count != 1)
-		ft_print_error("hatalı coin", solong);
+		ft_print_error(solong);
+	else if (solong->c_count < 1)
+		ft_print_error(solong);
 }

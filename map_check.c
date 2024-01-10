@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:36:51 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/09 19:21:58 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:53:13 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,39 +35,60 @@ int	map_checker(t_solong *mapcheck)
 	y = -1;
 	map = mapcheck->map;
 	if (!mapcheck->map[0])
-		return (0);
+		ft_print_error(mapcheck);
 	while (map[++y])
 	{
 		x = -1;
 		while (map[y][++x])
 		{
-			if ((y == 0 || y == mapcheck->mapy - 1) && map[y][x] != '1'
-				&& printf("kenarlar 1 değil"))
-				return (0);
-			else if ((x == 0 || x == mapcheck->mapx - 1) && map[y][x] != '1'
-				&& printf("kenarlar 1 değil"))
-				return (0);
-			else if (!ft_strchr("10ECP", mapcheck->map[y][x])
-				&& printf("farklı karakter var"))
-				return (0);
+			if ((y == 0 || y == mapcheck->mapy - 1) && map[y][x] != '1')
+				ft_print_error(mapcheck);
+			else if ((x == 0 || x == mapcheck->mapx - 1) && map[y][x] != '1')
+				ft_print_error(mapcheck);
+			else if (!ft_strchr("10ECP", mapcheck->map[y][x]))
+				ft_print_error(mapcheck);
 		}
-		if (mapcheck->mapx != x && printf("uzunlukları eşit değil"))
-			return (0);
+		if (mapcheck->mapx != x)
+			ft_print_error(mapcheck);
 	}
 	return (1);
 }
 
+void	palyer_location(t_solong *solong)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (solong->map[++y])
+	{
+		x = -1;
+		while (solong->map[y][++x])
+		{
+			if (solong->map[y][x] == 'P')
+			{
+				solong->p_x = x;
+				solong->p_y = y;
+			}
+		}
+	}
+}
+
 int	main(int ac, char **av)
 {
-	t_solong	*a;
+	t_solong	*solong;
 
-	// int			index;
+	 //int			index;
 	if (ac != 2)
 		return (0);
-	a = malloc(sizeof(t_solong));
-	map_reader(av[1], a);
-	map_checker(a);
-	object_check(a);
+	solong = malloc(sizeof(t_solong));
+
+	map_name(av[1]);
+	map_reader(av[1], solong);
+	map_checker(solong);
+	object_check(solong);
+	palyer_location(solong);
+	flood_fill(solong);
 }
 // printf("%d", map_checker(a));
 

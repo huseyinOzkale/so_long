@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:08:14 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/09 19:22:01 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:04:38 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	map_len(t_solong *solong, char *map)
 	return (len);
 }
 
-void	map_reader(char *map, t_solong *solong)
+void	map_reader(char *map, t_solong *solong) 
 {
 	int i;
 	int len;
@@ -46,11 +46,13 @@ void	map_reader(char *map, t_solong *solong)
 	if (fd < 0)
 		return ;
 	map_str = malloc(sizeof(char *) * (len + 1));
+	solong->map_cpy=malloc(sizeof(char *) *(len + 1));
 	if (!map_str)
 		return ;
 	while (i < len)
 	{
 		map_str[i++] = get_next_line(fd);
+		solong->map_cpy=map_str;
 	}
 	map_str[i] = NULL;
 	solong->map = map_str;
