@@ -6,25 +6,27 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:36:51 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/10 19:53:13 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:55:25 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "solong.h"
 
-// void ft_xpm(t_solong *map)
-// {
-// 	int a;
-// 	int b;
+void	ft_image_xpm(t_solong *map)
+{
+	int	a;
+	int	b;
 
-// 	map->coin=mlx_xpm_file_to_image(map->mlx,"rr.xpm",&a,&b);
-// 	map->car=mlx_xpm_file_to_image(map->mlx,"mcqueen.xpm",&a,&b);
-// 	map->wall=mlx_xpm_file_to_image(map->mlx,"barrier.xpm",&a,&b);
-// 	map->ground=mlx_file_to_image(map->mlx,"road.xpm",&a,&b);
-// 	map->mlx_win=mlx_new_window(map->mlx,1920,1080,"SOLONG");
-
-// }
+	map->coin = mlx_xpm_file_to_image(map->mlx, "rr.xpm", &a, &b);
+	map->car = mlx_xpm_file_to_image(map->mlx, "mcqueen.xpm", &a, &b);
+	map->wall = mlx_xpm_file_to_image(map->mlx, "barrier.xpm", &a, &b);
+	map->ground = mlx_xpm_file_to_image(map->mlx, "road.xpm", &a, &b);
+	map->exit = mlx_xpm_file_to_image(map->mlx, "pistoncup.xpm", &a, &b);
+	if (!map->coin || !map->car || !map->wall || !map->ground || !map->exit)
+		ft_print_error(map);
+	map->mlx_win = mlx_new_window(map->mlx, map->mapx * 64, map->mapy * 64,
+			"SOLONG");
+}
 
 int	map_checker(t_solong *mapcheck)
 {
@@ -54,7 +56,7 @@ int	map_checker(t_solong *mapcheck)
 	return (1);
 }
 
-void	palyer_location(t_solong *solong)
+void	player_location(t_solong *solong)
 {
 	int	x;
 	int	y;
@@ -78,20 +80,26 @@ int	main(int ac, char **av)
 {
 	t_solong	*solong;
 
-	 //int			index;
 	if (ac != 2)
 		return (0);
 	solong = malloc(sizeof(t_solong));
-
 	map_name(av[1]);
 	map_reader(av[1], solong);
 	map_checker(solong);
 	object_check(solong);
-	palyer_location(solong);
+	player_location(solong);
 	flood_fill(solong);
+	solong->x = 0;
+	solong->y = 0;
+	solong->mlx = mlx_init();
+	ft_image_xpm(solong);
+	map_create(solong);
+	mlx_key_hook(solong->mlx_win, map_movement, solong);
+	mlx_loop(solong->mlx);
 }
 // printf("%d", map_checker(a));
 
+// int			index;
 // index = 0;
 // while (a->map[index])
 // {
@@ -101,17 +109,6 @@ int	main(int ac, char **av)
 // if (ft_is_rectangle(a) == 0)
 // 	ft_error();
 
-// int c;
-// int b;
-// a.x = 0;
-// a.y = 0;
-// a.mlx = mlx_init();
-// a.mlx_win = mlx_new_window(a.mlx, 1920, 1080, "solong");
-// a.car = mlx_xpm_file_to_image(a.mlx,"mcqueen.xpm", &c, &b);
-// mlx_put_image_to_window(a.mlx,a.mlx_win,a.car,a.x * 64, a.y * 64);
-// ft_xpm(&a);
-// mlx_key_hook(a.mlx_win,ft_key,&a);
-// mlx_loop(a.mlx);
 // int ft_key(int keycode, t_solong *a)
 // {
 
@@ -146,5 +143,6 @@ int	main(int ac, char **av)
 // 		a->y--;
 // 		mlx_put_image_to_window(a->mlx,a->mlx_win,a->car,a->x * 64,a->y * 64);
 // 	}
+// 	map_create(a);
 // 	return (0);
 // }

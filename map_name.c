@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:25:36 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/10 18:25:37 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:57:14 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	map_name(char *str)
 {
-	int i = 0;
+	int i;
+
+	i = 0;
 	i = ft_strlen(str) - 1;
 	if (i <= 3)
 	{

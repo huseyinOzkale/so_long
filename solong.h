@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:37:10 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/10 20:01:37 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:49:59 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+#include "mlx/mlx.h"
 typedef struct s_solong
 {
 	void	*ground;
 	void	*wall;
+	void 	*exit;
 	void	*coin;
 	void	*mlx;
 	void	*mlx_win;
@@ -35,6 +37,7 @@ typedef struct s_solong
 	int		p_count;
 	int		c_count;
 	int		e_count;
+	int 	c_number;
 }			t_solong;
 
 int			map_checker(t_solong *mapcheck);
@@ -46,5 +49,14 @@ void		object_check(t_solong *solong);
 void		map_name(char *str);
 void		fill(t_solong *solong, int y, int x);
 void		flood_fill(t_solong *solong);
+void		player_location(t_solong *solong);
+void		ft_image_xpm(t_solong *map);
+void		map_create(t_solong *creatmap);
+void		map_cpy(char *map, t_solong *solong);
+int			map_movement(int keycode, t_solong *movement);
+void 		keycode_1(t_solong *movement , int x, int y);
+void 		keycode_2(t_solong *movement , int x, int y);
+void 		keycode_0(t_solong *movement , int x, int y);
+void 		keycode_13(t_solong *movement , int x, int y);
 
 #endif
