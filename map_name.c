@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:25:36 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/13 15:57:14 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:07:48 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	map_name(char *str)
 		printf("MAP NAME ERROR!");
 		exit(1);
 	}
-	else if (str[i] != 'r' || str[i - 1] != 'e' || str[i - 2] != 'b' || str[i
-		- 3] != '.')
+	else if (str[i] != 'r' || str[i - 1] != 'e' || str[i - 2] != 'b' || str[i- 3] != '.')
 	{
 		printf("MAP NAME ERROR!");
 		exit(1);

@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:37:10 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/13 15:49:59 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:26:36 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct s_solong
 	void	*car;
 	char	**map;
 	char	**map_cpy;
-	int		x;
-	int		y;
 	int		p_x;
 	int		p_y;
 	int		mapy;
@@ -38,6 +36,7 @@ typedef struct s_solong
 	int		c_count;
 	int		e_count;
 	int 	c_number;
+	int 	moves_number;
 }			t_solong;
 
 int			map_checker(t_solong *mapcheck);
@@ -58,5 +57,11 @@ void 		keycode_1(t_solong *movement , int x, int y);
 void 		keycode_2(t_solong *movement , int x, int y);
 void 		keycode_0(t_solong *movement , int x, int y);
 void 		keycode_13(t_solong *movement , int x, int y);
+void		ft_error(t_solong *solong);
+void		ft_ferror(t_solong *solong);
+int			ft_game_closed(t_solong *solong);
+void 		ft_zero(t_solong *solong);
+void		texture_error(t_solong *solong);
+void		texture_check(t_solong *solong);
 
 #endif

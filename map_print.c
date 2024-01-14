@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:08:14 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/13 15:57:52 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:07:52 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	map_reader(char *map, t_solong *solong)
 	solong->map[i] = NULL;
 	close(fd);
 	map_cpy(map, solong);
+	if (solong->mapx >= 40 || solong->mapy >= 22)
+		ft_print_error(solong);
 }
 
 void	map_cpy(char *map, t_solong *solong)

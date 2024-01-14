@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:08:03 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/10 16:44:04 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:06:22 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,42 @@ void	ft_print_error(t_solong *solong)
 		i++;
 	}
 	free(solong->map);
+	free(solong);
+	exit(1);
+}
+
+void	ft_error(t_solong *solong)
+{
+	int	i;
+
+	i = 0;
+	printf("MAP ERROR!");
+	while (solong->map_cpy[i])
+	{
+		if (solong->map_cpy[i] != NULL)
+			free(solong->map_cpy[i]);
+		i++;
+	}
+	free(solong->map_cpy);
+	free(solong);
+	exit(1);
+}
+
+void	ft_ferror(t_solong *solong)
+{
+	int	i;
+
+	i = 0;
+	printf("CONGRATULATIONS");
+	while (solong->map[i])
+	{
+		if (solong->map[i] != NULL)
+			free(solong->map[i]);
+		i++;
+	}
+	free(solong->map);
+	free(solong);
+	mlx_destroy_window(solong->mlx, solong->mlx_win);
 	exit(1);
 }
 

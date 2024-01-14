@@ -6,7 +6,7 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 18:41:13 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/13 15:55:12 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/14 15:20:45 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,7 @@ void	flood_fill(t_solong *solong)
 		while (solong->map_cpy[y][++x])
 		{
 			if (ft_strchr("EC", solong->map_cpy[y][x]))
-				ft_print_error(solong);
+				ft_error(solong);
 		}
 	}
-	// int index = 0;
-	// while (solong->map_cpy[index])
-	// {
-	// 	printf("%s\n", solong->map_cpy[index]);
-	// 	index++;
-	// }
 }
