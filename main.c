@@ -6,17 +6,16 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:41:49 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/14 18:28:49 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:29:17 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
 void	ft_zero(t_solong *solong)
 {
 	solong->c_count = 0;
 	solong->c_number = 0;
-	solong->coin = 0;
 	solong->p_x = 0;
 	solong->p_y = 0;
 	solong->mapy = 0;
@@ -24,6 +23,8 @@ void	ft_zero(t_solong *solong)
 	solong->p_count = 0;
 	solong->e_count = 0;
 	solong->moves_number = 0;
+	solong->e_x = 0;
+	solong->e_y = 0;
 }
 
 int	main(int ac, char **av)
@@ -38,6 +39,7 @@ int	main(int ac, char **av)
 	ft_zero(solong);
 	texture_check(solong);
 	map_name(av[1]);
+	map_name2(av[1]);
 	map_reader(av[1], solong);
 	map_checker(solong);
 	object_check(solong);

@@ -6,18 +6,18 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 15:32:07 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/14 18:29:40 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:15:14 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
 int	ft_game_closed(t_solong *solong)
 {
 	int	i;
 
 	i = 0;
-	printf("game closed!");
+	ft_printf("game closed!");
 	while (solong->map[i])
 	{
 		if (solong->map[i] != NULL)
@@ -29,11 +29,12 @@ int	ft_game_closed(t_solong *solong)
 	mlx_destroy_window(solong->mlx, solong->mlx_win);
 	exit(1);
 }
+
 void	texture_error(t_solong *solong)
 {
 	int	i;
 
-	printf("texture error!");
+	ft_printf("texture error!");
 	i = 0;
 	free(solong);
 	exit(1);
@@ -41,7 +42,7 @@ void	texture_error(t_solong *solong)
 
 void	texture_check(t_solong *solong)
 {
-	int fd;
+	int	fd;
 
 	fd = open("textures/barrier.xpm", O_RDONLY);
 	if (fd == -1)

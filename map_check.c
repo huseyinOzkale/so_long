@@ -6,11 +6,11 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:36:51 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/14 18:18:45 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:57:39 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
 void	ft_image_xpm(t_solong *map)
 {
@@ -21,7 +21,8 @@ void	ft_image_xpm(t_solong *map)
 	map->car = mlx_xpm_file_to_image(map->mlx, "textures/mcqueen.xpm", &a, &b);
 	map->wall = mlx_xpm_file_to_image(map->mlx, "textures/barrier.xpm", &a, &b);
 	map->ground = mlx_xpm_file_to_image(map->mlx, "textures/road.xpm", &a, &b);
-	map->exit = mlx_xpm_file_to_image(map->mlx, "textures/pistoncup.xpm", &a, &b);
+	map->exit = mlx_xpm_file_to_image(map->mlx,
+			"textures/pistoncup.xpm", &a, &b);
 	if (!map->coin || !map->car || !map->wall || !map->ground || !map->exit)
 		ft_print_error(map);
 	map->mlx_win = mlx_new_window(map->mlx, map->mapx * 64, map->mapy * 64,
@@ -71,6 +72,11 @@ void	player_location(t_solong *solong)
 			{
 				solong->p_x = x;
 				solong->p_y = y;
+			}
+			else if (solong->map[y][x] == 'E')
+			{
+				solong->e_x = x;
+				solong->e_y = y;
 			}
 		}
 	}

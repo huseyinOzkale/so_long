@@ -6,11 +6,11 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:08:14 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/14 18:07:52 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:44:59 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
 int	map_len(t_solong *solong, char *map)
 {

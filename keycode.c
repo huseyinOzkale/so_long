@@ -6,14 +6,16 @@
 /*   By: huozkale <huozkale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 15:52:43 by huozkale          #+#    #+#             */
-/*   Updated: 2024/01/14 18:06:59 by huozkale         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:54:33 by huozkale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
 void	keycode_2(t_solong *movement, int x, int y)
 {
+	movement->moves_number += 1;
+	ft_printf("moves_number : %d\n", movement->moves_number);
 	if (movement->map[y][x + 1] == '0' || movement->map[y][x + 1] == 'C')
 	{
 		if (movement->map[y][x + 1] == 'C')
@@ -21,8 +23,6 @@ void	keycode_2(t_solong *movement, int x, int y)
 		movement->map[y][x] = '0';
 		movement->map[y][x + 1] = 'P';
 		movement->p_x++;
-		movement->moves_number += 1;
-		printf("moves_number : %d\n", movement->moves_number);
 	}
 	if (movement->map[y][x + 1] == 'E')
 	{
@@ -30,11 +30,19 @@ void	keycode_2(t_solong *movement, int x, int y)
 		{
 			ft_ferror(movement);
 		}
+		else
+		{
+			movement->map[y][x] = '0';
+			movement->map[y][x + 1] = 'P';
+			movement->p_x++;
+		}
 	}
 }
 
 void	keycode_0(t_solong *movement, int x, int y)
 {
+	movement->moves_number += 1;
+	ft_printf("moves_number : %d\n", movement->moves_number);
 	if (movement->map[y][x - 1] == '0' || movement->map[y][x - 1] == 'C')
 	{
 		if (movement->map[y][x - 1] == 'C')
@@ -42,8 +50,6 @@ void	keycode_0(t_solong *movement, int x, int y)
 		movement->map[y][x] = '0';
 		movement->map[y][x - 1] = 'P';
 		movement->p_x--;
-		movement->moves_number += 1;
-		printf("moves_number : %d\n", movement->moves_number);
 	}
 	if (movement->map[y][x - 1] == 'E')
 	{
@@ -51,11 +57,19 @@ void	keycode_0(t_solong *movement, int x, int y)
 		{
 			ft_ferror(movement);
 		}
+		else
+		{
+			movement->map[y][x] = '0';
+			movement->map[y][x - 1] = 'P';
+			movement->p_x--;
+		}
 	}
 }
 
 void	keycode_13(t_solong *movement, int x, int y)
 {
+	movement->moves_number += 1;
+	ft_printf("moves_number : %d\n", movement->moves_number);
 	if (movement->map[y - 1][x] == '0' || movement->map[y - 1][x] == 'C')
 	{
 		if (movement->map[y - 1][x] == 'C')
@@ -63,8 +77,6 @@ void	keycode_13(t_solong *movement, int x, int y)
 		movement->map[y][x] = '0';
 		movement->map[y - 1][x] = 'P';
 		movement->p_y--;
-		movement->moves_number += 1;
-		printf("moves_number : %d\n", movement->moves_number);
 	}
 	if (movement->map[y - 1][x] == 'E')
 	{
@@ -72,11 +84,19 @@ void	keycode_13(t_solong *movement, int x, int y)
 		{
 			ft_ferror(movement);
 		}
+		else
+		{
+			movement->map[y][x] = '0';
+			movement->map[y - 1][x] = 'P';
+			movement->p_y--;
+		}
 	}
 }
 
 void	keycode_1(t_solong *movement, int x, int y)
 {
+	movement->moves_number += 1;
+	ft_printf("moves_number : %d\n", movement->moves_number);
 	if (movement->map[y + 1][x] == '0' || movement->map[y + 1][x] == 'C')
 	{
 		if (movement->map[y + 1][x] == 'C')
@@ -84,14 +104,18 @@ void	keycode_1(t_solong *movement, int x, int y)
 		movement->map[y][x] = '0';
 		movement->map[y + 1][x] = 'P';
 		movement->p_y++;
-		movement->moves_number += 1;
-		printf("moves_number : %d\n", movement->moves_number);
 	}
 	if (movement->map[y + 1][x] == 'E')
 	{
 		if (movement->c_count == movement->c_number)
 		{
 			ft_ferror(movement);
+		}
+		else
+		{
+			movement->map[y][x] = '0';
+			movement->map[y + 1][x] = 'P';
+			movement->p_y++;
 		}
 	}
 }
